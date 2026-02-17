@@ -1,20 +1,39 @@
-/*images*/
+/*images cabecera*/
 .header-imgs img{
   width: 100%;
   object-fit: cover;
   aspect-ratio: 1 / 1;
 }
 
-.product-container img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border-radius: 8px;
+/* texto de punta a punta*/
+.scroll-container {
+
+  overflow: hidden;
+  white-space: nowrap;
+  background-color: #ffffff;
+  padding: 1rem 0;
+}
+
+.scroll-text h2 {
+  font-family:Arial, Helvetica, sans-serif ;
+  display: inline-block;
+  color: var(--color-primary);
+  font-size: 100px;
+  font-weight: 400;
+  margin: 0;
+  animation: scroll 30s linear infinite;
+}
+
+
+/*animacion texto*/
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 /*lista de productos*/
 .lista-menu ul{
- font-size: 60px;
+  font-size: 60px;
   list-style: none;
   margin: 45px;
   padding: 0;
@@ -37,29 +56,59 @@ a {
   text-decoration: none; /*quitar el azul de las letras*/
 }
 
-
-
-/**/
-.scroll-container {
-  overflow: hidden;
-  white-space: nowrap;
-  background-color: #ffffff;
-  padding: 1rem 0;
+/*imagenes productos compra*/
+.product-scroll {
+  display: flex;
+  gap: 1.5rem;
+  padding: 2rem;
 }
 
-.scroll-text h2 {
-  font-family:Arial, Helvetica, sans-serif ;
-  display: inline-block;
-  color: var(--color-primary);
-  font-size: 100px;
-  font-weight: 400;
-  margin: 0;
-  animation: scroll 30s linear infinite;
+.product-item {
+  min-width: 300px;
+  flex-shrink: 0;
 }
 
+.product-item img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+/* over flow flechas*/
+.carousel-wrapper {
+  position: relative;
+  padding: 0 60px;
+  background-color: transparent;
+}
 
-/*animacion*/
-@keyframes scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-15%); }
+.product-container {
+  overflow-x: hidden;  /*cultar el contenido*/
+  scroll-behavior: smooth;  /* scroll suave en lugar de que sea brusco */
+
+}
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  color: #6B8E23;
+  border: none;
+  width: 50px;
+  height: 50px;
+  font-size: 3rem;
+  cursor: pointer;
+  z-index: 10;
+  ;
+}
+
+.carousel-btn:hover {
+  color: #5A7A1F;  /*color más oscuro al hover */
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
 }
