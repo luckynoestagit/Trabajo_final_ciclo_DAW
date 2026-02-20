@@ -8,6 +8,7 @@ class Cliente(models.Model):
     nombre = models.CharField(max_length=100, blank=False, null=False, verbose_name='Nombre Cliente')
     apellidos = models.CharField(max_length=100, blank=False, null=False, verbose_name='Apellido Cliente')
     email = models.EmailField(max_length=100, blank=False, null=False, verbose_name='Email Cliente')
+    password = models.CharField(max_length=128, blank=False, null=False)
     edad = models.IntegerField(blank=False, null=False, verbose_name='Edad', validators=[MinValueValidator(18)], help_text='Debe ser mayor que 18')
     slug = models.SlugField(max_length=100,unique=True, verbose_name='Slug Cliente')
     telefono = models.CharField(max_length=100, blank=False, null=False, verbose_name='Telefono')
@@ -37,3 +38,12 @@ class Cliente(models.Model):
 
     def __str__(self):
         return f"Cliente: {self.nombre}, {self.apellidos}, {self.edad}, {self.slug}"
+
+    #funciones check password
+
+    def check_password(self, password):
+        from django.contrib.auth.hashers import check_password as check_pw
+        return check_pw(password, self.password)
+
+    def __str__(self):
+        return f"Cliente: {self.nombre}, {self.apellidos}"
