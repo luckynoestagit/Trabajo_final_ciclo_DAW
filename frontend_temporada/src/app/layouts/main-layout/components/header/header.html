@@ -1,7 +1,7 @@
 <div class="header">
   <div class="row align-items-center">
     <div class="col d-flex justify-content-start">
-      <button type="button" class="btn fs-4 ">Menu</button>
+      <button type="button" class="btn fs-4 " (click)="cambiarEstadoMenu()">Menu</button>
     </div>
 
     <div class="col d-flex justify-content-center">
@@ -16,7 +16,7 @@
         <i class="bi bi-cart-fill fs-4"></i>
       </button>
 
-      <button class="btn p-0 border-0 bg-transparent ">
+      <button class="btn p-0 border-0 bg-transparent" routerLink="/login">
         <i class="bi bi-person-fill fs-4"></i>
       </button>
 
@@ -24,3 +24,7 @@
 
   </div>
 </div>
+
+@if (openMenu() == true) {
+  <app-menu (openMenuDesdeHeader)="cambiarEstadoMenu()"></app-menu>
+}

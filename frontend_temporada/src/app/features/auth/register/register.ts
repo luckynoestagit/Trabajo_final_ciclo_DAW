@@ -1,5 +1,6 @@
-import { Component, output } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -8,11 +9,12 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
   styleUrl: './register.css',
 })
 export class Register {
-
-  onToggleLogin = output();
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router
+  ) {
     this.registerForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.maxLength(100)]],
       apellidos: ['', [Validators.required, Validators.maxLength(100)]],
@@ -25,24 +27,18 @@ export class Register {
   }
 
   onLoginClick() {
-    this.onToggleLogin.emit();
+    this.router.navigate(['/login']);
   }
 
   onSubmit() {
     if (this.registerForm.valid) {
       const clienteData = this.registerForm.value;
       console.log('Datos del cliente:', clienteData);
-
-      // Aquí harás la petición HTTP al backend Django
-      // this.http.post('http://localhost:8000/api/clientes/', clienteData).subscribe(...)
-
     } else {
       console.log('Formulario inválido');
-      // Marcar todos los campos como touched para mostrar errores
       Object.keys(this.registerForm.controls).forEach(key => {
         this.registerForm.get(key)?.markAsTouched();
       });
     }
   }
-
 }

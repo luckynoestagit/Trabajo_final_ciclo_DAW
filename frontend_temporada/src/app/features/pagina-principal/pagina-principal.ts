@@ -1,20 +1,14 @@
 import { Component } from '@angular/core';
+import {NewnewsletterSection} from '../../layouts/main-layout/components/newnewsletter-section/newnewsletter-section';
+import {Products} from '../../layouts/main-layout/components/products/products';
 
 
 @Component({
   selector: 'app-pagina-principal',
-  imports: [],
+  imports: [NewnewsletterSection, Products ],
   templateUrl: './pagina-principal.html',
   styleUrl: './pagina-principal.css',
 })
 export class PaginaPrincipal {
-  scrollLeft() {
-    const container = document.querySelector('.product-container') as HTMLElement;
-    container.scrollBy({ left: -320, behavior: 'smooth' });
-  }
 
-  scrollRight() {
-    const container = document.querySelector('.product-container') as HTMLElement;
-    container.scrollBy({ left: 320, behavior: 'smooth' });
-  }
 }
