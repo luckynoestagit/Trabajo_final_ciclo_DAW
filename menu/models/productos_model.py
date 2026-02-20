@@ -5,9 +5,9 @@ from django.db import models
 
 # productos_menu_temporada_restaurant
 class Producto(models.Model):
-    """
-    Modelo para los platos/productos del menú del restaurante TEMPORADA
-    """
+
+    #Modelo para los platos/productos del menú del restaurante TEMPORADA
+
 
     CATEGORIAS = [
         ('entrante', 'Entrante'),
